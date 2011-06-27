@@ -1,15 +1,95 @@
                 需求分析
 1、《帮帮158》简介
-  为满足学生、社会白领等各个社会成员进行信息发布。可以使用本网站进行招聘、求职、二手房买卖、创业点子、人脉需求、人脉供给等信息。
+  为满足学生、社会白领等各个社会成员进行信息发布。
+  可以使用本网站进行招聘、求职、房屋买卖、创业点子、人脉需求、人脉供给、市场等信息。
 2、数据库设计
    1）用户表：users
+    字段          长度        类型       空值      说明
+    id            20        integer    not      主键
+    email         50        string     not      邮箱
+    password      20        string     not      密码
+    sex           10        string     yes      性别
+    qq            12        string     yes      qq
+    phone         12        string     yes      电话
+
+   2）招聘信息：recruiments
     字段          长度       空值      说明
-    email         50        not      邮箱
-    password      20        not      密码
-   2）招聘信息：
+    id            20        not      主键
+    category      50        not      类别（外键）
+    address       20        not      所在地（外键）
+    advertisement 100       not      广告
+    title         50        not      标题
+    jobtype       10        not      职位类型（职介、非职介）
+    companyname   20        not      公司名称
+    agency        10        not      职介否
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    3）求职信息：recruiments
     字段          长度       空值      说明
-    email         50        not      邮箱
-    password      20        not      密码
+    id            20        not      主键
+    category      50        not      类别（外键）
+    address       20        not      所在地（外键）
+    title         50        not      标题
+    sex           10        not      性别
+    jobtype       10        not      职位类型（全职、兼职）
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    4）房屋信息：houses
+    字段          长度       空值      说明
+    id            20        not      主键
+    category      50        not      类别（外键）
+    address       20        not      所在地（外键）
+    title         50        not      标题
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    5）市场信息：houses
+    字段          长度       空值      说明
+    id            20        not      主键
+    category      50        not      类别（外键）
+    address       20        not      所在地（外键）
+    title         50        not      标题
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    6）创业信息：entrepreneurships
+    字段          长度       空值      说明
+    id            20        not      主键
+    title         50        not      标题
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    7）人脉信息：connections
+    字段          长度       空值      说明
+    id            20        not      主键
+    category      50        not      类型
+    title         50        not      标题
+    content       1000      not      内容
+    linkman       20        not      联系人
+    contact       100       not      联系方式
+
+    8）广告信息：advertisements
+    字段          长度       空值      说明
+    id            20        not      主键
+    url           100       not      链接
+    content       500       yes      内容
+
+    9）市区：cities
+    字段          长度       空值      说明
+    id            20        not      主键
+    name          100       not      市区名称
+
+    10）县：counties
+    字段          长度       空值      说明
+    id            20        not      主键
+    name          100       not      县名称
 3、业务流程设计
    1）注册
    点击注册--->注册页面--->填写信息--->点击注册按钮--->注册是否成功--成功->首页
@@ -26,10 +106,46 @@
    3）信息浏览
    点击查看信息--->显示信息列表--->选择要看的信息--->在新页面显示
 
+   4）登录
+   输入loginurl--->输入信息---->登录--->成功--->管理
+                                |
+                               失败
+                                |
+                               登录
+   4）用户个人信息管理
+   点击用户信息管理--->显示信息---->修该--->成功--->用户信息
+                                 |
+                                失败
+                                 |
+                              用户信息
+
 4、后台管理
+   1）广告发布
+   2）信息管理（删除信息、封锁信息）
+   3）账户管理（删除账户、封锁账户）
+   4）添加管理员
 
-5、运行环境
+5、后台管理业务逻辑
+   1）登录
+   输入conselurl--->输入信息---->登录--->成功--->管理
+                                |
+                               失败
+                                |
+                               登录
 
+   2）添加管理员
+   点击添加管理员--->输入信息--->点击新建--->成功--->显示刚刚新建用户信息
+                                |
+                               失败
+                                |
+                             新建用户
+
+   3）信息管理
+   点击信息管理--->查看信息--->修改信息--->刚刚修改的信息
+                    |
+                 删除信息
+                    |
+                 显示信息
 
 
 
